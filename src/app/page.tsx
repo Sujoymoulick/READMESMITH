@@ -26,10 +26,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContributorsPage } from "@/components/contributors/contributors-page";
+import SonicWaveformHero from "@/components/ui/sonic-waveform";
 
 export default function Home() {
   const { data, updateSection, addSection, removeSection, setData } = useREADME();
   const [activeTab, setActiveTab] = useState<"editor" | "snake" | "contributors">("editor");
+  const [hasStarted, setStarted] = useState(false);
 
   const markdown = generateMarkdown(data.sections);
 
@@ -90,6 +92,10 @@ export default function Home() {
     });
     toast.success(`Added ${type} section`);
   };
+
+  if (!hasStarted) {
+    return <SonicWaveformHero onStart={() => setStarted(true)} />;
+  }
 
   return (
     <main className="flex h-screen bg-zinc-950 text-white overflow-hidden flex-col md:flex-row">
