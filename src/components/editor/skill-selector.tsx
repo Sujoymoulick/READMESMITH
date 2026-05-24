@@ -81,11 +81,11 @@ export function SkillSelector({ selectedSkills, onChange }: SkillSelectorProps) 
                           : "bg-zinc-900/50 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:bg-zinc-800"
                       )}
                     >
-                      <div className="relative h-8 w-8 shrink-0 flex items-center justify-center">
+                      <div className="relative h-10 w-10 shrink-0 flex items-center justify-center">
                         <img
                           src={`https://skillicons.dev/icons?i=${skill.slug}`}
                           alt={skill.name}
-                          className={cn("h-8 w-8 object-contain", !isSelected && "grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100")}
+                          className={cn("h-10 w-10 object-contain", !isSelected && "grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100")}
                         />
                       </div>
                       <span className="text-sm font-medium truncate">{skill.name}</span>
