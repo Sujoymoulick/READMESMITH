@@ -66,15 +66,6 @@ const DEFAULT_SECTIONS: Section[] = [
     },
   },
   {
-    id: "snake-1",
-    type: "snake",
-    title: "GitHub Snake",
-    enabled: true,
-    content: {
-      username: "sujoymoulick",
-    },
-  },
-  {
     id: "footer-1",
     type: "footer",
     title: "Footer & Credits",

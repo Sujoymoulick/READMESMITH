@@ -36,7 +36,7 @@ export const generateMarkdown = (sections: Section[]): string => {
         case 'skills':
           const slugs = (c.skills || []).map((sk: any) => sk.slug).join(',');
           if (!slugs) return '';
-          return `### Languages and Tools:\n\n<p align="left">\n<a href="https://skillicons.dev">\n<img src="https://skillicons.dev/icons?i=${slugs}" style="height: 40px;" />\n</a>\n</p>\n`;
+          return `### Languages and Tools:\n\n<p align="left">\n<a href="https://skillicons.dev">\n<img src="https://skillicons.dev/icons?i=${slugs}&perline=20" style="height: 50px;" />\n</a>\n</p>\n`;
         
         case 'projects':
           const projectsList = (c.projects || [])

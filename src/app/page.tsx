@@ -5,14 +5,12 @@ import { useREADME } from "@/hooks/use-readme";
 import { generateMarkdown } from "@/lib/markdown-generator";
 import { SectionEditor } from "@/components/editor/section-editor";
 import { MarkdownPreview } from "@/components/preview/markdown-preview";
-import { SnakeGame } from "@/components/snake/snake-game";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   PlusCircle,
   Download,
   Upload,
-  Gamepad2,
   FileText,
   Settings,
   Users,
@@ -30,7 +28,7 @@ import SonicWaveformHero from "@/components/ui/sonic-waveform";
 
 export default function Home() {
   const { data, updateSection, addSection, removeSection, setData } = useREADME();
-  const [activeTab, setActiveTab] = useState<"editor" | "snake" | "contributors">("editor");
+  const [activeTab, setActiveTab] = useState<"editor" | "contributors">("editor");
   const [hasStarted, setStarted] = useState(false);
 
   const markdown = generateMarkdown(data.sections);
@@ -68,7 +66,7 @@ export default function Home() {
   const addNewSection = (type: any) => {
     const id = `${type}-${Date.now()}`;
     let content = { text: "" };
-    if (type === "streak" || type === "snake") {
+    if (type === "streak") {
       content = { username: "" } as any;
     } else if (type === "gif") {
       content = { url: "", align: "center" } as any;
@@ -116,14 +114,6 @@ export default function Home() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setActiveTab("snake")}
-            className={activeTab === "snake" ? "bg-zinc-800" : ""}
-          >
-            <Gamepad2 className="h-5 w-5" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
             onClick={() => setActiveTab("contributors")}
             className={activeTab === "contributors" ? "bg-zinc-800" : ""}
           >
@@ -150,14 +140,7 @@ export default function Home() {
 
       {/* Main Content Area */}
       <div className="flex-1 flex overflow-hidden flex-col md:flex-row">
-        {activeTab === "snake" ? (
-          <div className="flex-1 flex items-center justify-center p-4 md:p-8 bg-zinc-950">
-            <div className="max-w-xl w-full">
-              <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">Interactive Snake</h2>
-              <SnakeGame />
-            </div>
-          </div>
-        ) : activeTab === "contributors" ? (
+        {activeTab === "contributors" ? (
           <ContributorsPage />
         ) : (
           <>
@@ -186,7 +169,6 @@ export default function Home() {
                     <DropdownMenuItem onClick={() => addNewSection("streak")}>GitHub Streak</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("socials")}>Social Links</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("gif")}>GIF / Image</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => addNewSection("snake")}>GitHub Snake</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("footer")}>Footer & Credits</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -255,9 +237,6 @@ export default function Home() {
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => addNewSection("gif")}>
                         GIF / Image
-                      </DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => addNewSection("snake")}>
-                        GitHub Snake
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => addNewSection("footer")}>
                         Footer & Credits

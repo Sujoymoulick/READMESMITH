@@ -93,7 +93,7 @@ interface SonicWaveformHeroProps {
 }
 
 const SonicWaveformHero = ({ onStart }: SonicWaveformHeroProps) => {
-    const fadeUpVariants = {
+    const fadeUpVariants: any = {
         hidden: { opacity: 0, y: 20 },
         visible: (i: number) => ({
             opacity: 1,
@@ -101,7 +101,7 @@ const SonicWaveformHero = ({ onStart }: SonicWaveformHeroProps) => {
             transition: {
                 delay: i * 0.2 + 0.5,
                 duration: 0.8,
-                ease: "easeInOut",
+                ease: "easeInOut" as const,
             },
         }),
     };

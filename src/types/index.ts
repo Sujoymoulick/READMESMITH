@@ -7,7 +7,7 @@ export type SectionType =
   | 'projects' 
   | 'streak'
   | 'socials' 
-  | 'snake' 
+  | 'snake'
   | 'gif'
   | 'profile-details'
   | 'custom'

@@ -177,29 +177,23 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
         );
       case "streak":
         return (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-4">
             <div className="space-y-2">
               <Label>GitHub Username</Label>
               <Input
                 value={c.username || ""}
                 onChange={(e) => handleContentChange("username", e.target.value)}
-                placeholder="e.g. sujoymoulick"
+                placeholder="yourusername"
               />
             </div>
             <div className="space-y-2">
               <Label>Theme</Label>
               <Input
-                value={c.theme || ""}
+                value={c.theme || "radical"}
                 onChange={(e) => handleContentChange("theme", e.target.value)}
-                placeholder="radical, dark, high-contrast"
+                placeholder="radical, dark, highcontrast, etc."
               />
             </div>
-          </div>
-        );
-      case "snake":
-        return (
-          <div className="py-2 text-sm text-zinc-500 italic">
-            This section displays a universal GitHub Snake animation.
           </div>
         );
       case "gif":
