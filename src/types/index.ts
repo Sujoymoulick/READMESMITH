@@ -5,7 +5,6 @@ export type SectionType =
   | 'about' 
   | 'skills' 
   | 'projects' 
-  | 'stats' 
   | 'streak'
   | 'socials' 
   | 'snake' 

@@ -56,16 +56,6 @@ const DEFAULT_SECTIONS: Section[] = [
     },
   },
   {
-    id: "stats-1",
-    type: "stats",
-    title: "GitHub Stats",
-    enabled: true,
-    content: {
-      username: "sujoymoulick",
-      theme: "radical",
-    },
-  },
-  {
     id: "streak-1",
     type: "streak",
     title: "GitHub Streak",

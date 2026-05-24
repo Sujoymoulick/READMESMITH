@@ -175,53 +175,6 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
             </div>
           </div>
         );
-      case "stats":
-        return (
-          <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>GitHub Username</Label>
-                <Input
-                  value={c.username || ""}
-                  onChange={(e) => handleContentChange("username", e.target.value)}
-                  placeholder="e.g. sujoymoulick"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label>Theme</Label>
-                <Input
-                  value={c.theme || ""}
-                  onChange={(e) => handleContentChange("theme", e.target.value)}
-                  placeholder="radical, dark, high-contrast"
-                />
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="flex items-center justify-between p-2 bg-zinc-800/30 rounded border border-zinc-800">
-                <Label className="text-xs">Stats Card</Label>
-                <Switch 
-                  checked={c.showStats !== false} 
-                  onCheckedChange={(val) => handleContentChange("showStats", val)}
-                />
-              </div>
-              <div className="flex items-center justify-between p-2 bg-zinc-800/30 rounded border border-zinc-800">
-                <Label className="text-xs">Top Languages</Label>
-                <Switch 
-                  checked={c.showLangs !== false} 
-                  onCheckedChange={(val) => handleContentChange("showLangs", val)}
-                />
-              </div>
-              <div className="flex items-center justify-between p-2 bg-zinc-800/30 rounded border border-zinc-800">
-                <Label className="text-xs">Profile Trophies</Label>
-                <Switch 
-                  checked={!!c.showTrophies} 
-                  onCheckedChange={(val) => handleContentChange("showTrophies", val)}
-                />
-              </div>
-            </div>
-          </div>
-        );
       case "streak":
         return (
           <div className="grid grid-cols-2 gap-4">

@@ -86,25 +86,6 @@ export const generateMarkdown = (sections: Section[]): string => {
           if (!c.url) return '';
           return `<div align="${align}">\n  <img src="${c.url}"${height} alt="GIF" />\n</div>\n`;
 
-        case 'stats':
-          const username = c.username;
-          if (!username) return '<!-- Please provide a GitHub username to see stats -->';
-          const theme = c.theme || 'radical';
-          let output = `### GitHub Stats\n\n<div align="center">\n`;
-          
-          if (c.showTrophies) {
-            output += `  <img src="https://github-profile-trophy.vercel.app/?username=${username}&theme=jonas" alt="Trophies" />\n  <br>\n`;
-          }
-          if (c.showStats !== false) {
-            output += `  <img src="https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=${theme}" alt="Stats Card" />\n`;
-          }
-          if (c.showLangs !== false) {
-            output += `  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=${theme}" alt="Top Langs" />\n`;
-          }
-          
-          output += `</div>\n`;
-          return output;
-        
         case 'streak':
           if (!c.username) return '';
           return `### GitHub Streak Stats\n\n<div align="center">\n  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${c.username}&theme=${c.theme || 'radical'}" alt="GitHub Streak" />\n</div>\n`;

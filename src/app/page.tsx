@@ -66,7 +66,7 @@ export default function Home() {
   const addNewSection = (type: any) => {
     const id = `${type}-${Date.now()}`;
     let content = { text: "" };
-    if (type === "stats" || type === "streak" || type === "snake") {
+    if (type === "streak" || type === "snake") {
       content = { username: "" } as any;
     } else if (type === "gif") {
       content = { url: "", align: "center" } as any;
@@ -177,7 +177,6 @@ export default function Home() {
                     <DropdownMenuItem onClick={() => addNewSection("about")}>About Section</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("skills")}>Skills</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("projects")}>Projects List</DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => addNewSection("stats")}>GitHub Stats</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("streak")}>GitHub Streak</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("socials")}>Social Links</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("gif")}>GIF / Image</DropdownMenuItem>
@@ -241,9 +240,6 @@ export default function Home() {
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => addNewSection("projects")}>
                         Projects List
-                      </DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => addNewSection("stats")}>
-                        GitHub Stats
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => addNewSection("streak")}>
                         GitHub Streak
