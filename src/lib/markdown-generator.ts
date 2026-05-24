@@ -15,20 +15,20 @@ export const generateMarkdown = (sections: Section[]): string => {
         
         case 'intro':
           const items = [
-            c.workingOn && `🔭 I’m currently working on **${c.workingOn}**`,
-            c.learning && `🌱 I’m currently learning **${c.learning}**`,
-            c.collaboration && `👯 I’m looking to collaborate on **${c.collaboration}**`,
-            c.help && `🤔 I’m looking for help with **${c.help}**`,
-            c.askMe && `💬 Ask me about **${c.askMe}**`,
-            c.contact && `📫 How to reach me **${c.contact}**`,
-            c.pronouns && `😄 Pronouns: **${c.pronouns}**`,
-            c.funFact && `⚡ Fun fact: **${c.funFact}**`,
-          ].filter(Boolean).map(item => `- ${item}`).join('\n');
+            c.workingOn && `<li>🔭 I’m currently working on <b>${c.workingOn}</b></li>`,
+            c.learning && `<li>🌱 I’m currently learning <b>${c.learning}</b></li>`,
+            c.collaboration && `<li>👯 I’m looking to collaborate on <b>${c.collaboration}</b></li>`,
+            c.help && `<li>🤔 I’m looking for help with <b>${c.help}</b></li>`,
+            c.askMe && `<li>💬 Ask me about <b>${c.askMe}</b></li>`,
+            c.contact && `<li>📫 How to reach me <b>${c.contact}</b></li>`,
+            c.pronouns && `<li>😄 Pronouns: <b>${c.pronouns}</b></li>`,
+            c.funFact && `<li>⚡ Fun fact: <b>${c.funFact}</b></li>`,
+          ].filter(Boolean).join('\n');
           
           if (c.illustrationUrl) {
-            return `<div align="center">\n\n<table border="0">\n  <tr>\n    <td valign="top" width="50%">\n\n${items}\n\n    </td>\n    <td valign="top" width="50%">\n      <img src="${c.illustrationUrl}" align="right" width="100%" />\n    </td>\n  </tr>\n</table>\n\n</div>\n`;
+            return `<div>\n<table border="0">\n  <tr>\n    <td width="50%" valign="top">\n      <ul style="list-style-type: none; padding-left: 0;">\n        ${items}\n      </ul>\n    </td>\n    <td width="50%" valign="top">\n      <img src="${c.illustrationUrl}" width="100%" />\n    </td>\n  </tr>\n</table>\n</div>\n`;
           }
-          return `${items}\n`;
+          return `<ul>\n${items}\n</ul>\n`;
 
         case 'about':
           return `## ${s.title}\n\n${c.text}\n`;
