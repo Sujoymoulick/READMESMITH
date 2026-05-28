@@ -1,7 +1,8 @@
 {
   "name": "readmesmith",
   "version": "0.1.0",
-  "private": true,
+  "author": "Sujoy Moulick",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
