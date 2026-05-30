@@ -1,99 +1,76 @@
-# <p align="center"><img src="public/mainlogo.png" height="120" alt="ReadmeSmith Logo" /><br>ReadmeSmith</p>
+# ReadmeSmith 🛠️
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT" />
-</p>
+**Forge professional GitHub profiles in seconds. Interactive, modular, and designed for developers who value impact.**
 
----
+ReadmeSmith is the ultimate README forge—a modern, AI-powered toolkit for developers to build, preview, and refine their GitHub profiles. Whether you're using our modular editor or generating high-quality prompts for your favorite AI, ReadmeSmith ensures your first impression is unforgettable.
 
-## 🚀 Overview
+![ReadmeSmith Logo](/public/mainlogo.png)
 
-**ReadmeSmith** is a modern, professional, and highly customizable GitHub README generator. Built with a focus on aesthetics and ease of use, it allows developers to forge beautiful profile pages using a modular, "SaaS-style" interface.
+## ✨ Features
 
-### ✨ Key Features
-- **Modular Sections:** Add, remove, and reorder sections like Banners, Stats, Skills, and more.
-- **Sustainable Socials:** High-quality, coloured brand icons powered by `coloured-icons`.
-- **Live Preview:** Real-time markdown rendering as you edit.
-- **Interactive Snake:** Integrated GitHub Contribution Snake animation preview.
-- **GIF Support:** Easily add and align custom animations.
-- **Mobile Responsive:** Full-featured editor and preview on any device.
+- **🚀 AI Prompt Builder:** A step-by-step wizard that gathers your professional details and tech stack to generate a comprehensive prompt for LLMs (like Gemini, Claude, or GPT) to write your README.
+- **🏗️ Modular Editor:** Add, remove, and reorder sections like Banners, Intros, Skill Icons, and GitHub Stats with ease.
+- **👁️ Live Markdown Previewer:** A dedicated, internal live editor with side-by-side rendering to test and refine any markdown code in real-time.
+- **📱 Fully Mobile Responsive:** Designed with a mobile-first approach, featuring a "3-dot" quick-navigation menu and optimized view toggles for editing on the go.
+- **🎨 Modern Dark Aesthetic:** A sleek, futuristic interface built with a custom dark theme and smooth animations.
+- **🛡️ Data Privacy:** All your progress is saved locally in your browser. Your data never leaves your machine unless you choose to copy it.
 
----
+## 🛠️ Tech Stack
 
-## 🛠 Architecture & Workflow
+- **Framework:** [Next.js 15+](https://nextjs.org/) (App Router & Turbopack)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **UI Components:** [Radix UI](https://www.radix-ui.com/) & [Lucide Icons](https://lucide.dev/)
+- **State Management:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Rendering:** [React Markdown](https://github.com/remarkjs/react-markdown)
 
-ReadmeSmith follows a clean, component-based architecture leveraging the power of Next.js and React's state management.
+## 🚀 Getting Started
 
-### 🔄 System Flow
+### Prerequisites
 
-```mermaid
-graph TD
-    A[User Input] -->|Updates State| B(useREADME Hook)
-    B -->|Syncs| C[Local Storage]
-    B -->|Passes Data| D(Markdown Generator)
-    D -->|Generates String| E[Markdown Preview]
-    E -->|Renders HTML| F[User View]
-    D -->|Direct Output| G[Download / Copy]
-```
+- Node.js 18.x or later
+- npm or yarn
 
-### 📂 Directory Structure
+### Installation
 
-- `src/app`: Core pages and global layout configurations.
-- `src/components`: UI primitives and feature-specific components (Editor, Preview, Contributors).
-- `src/hooks`: Custom state logic for README data management.
-- `src/lib`: The engine of the app, including the `markdown-generator`.
-- `src/types`: TypeScript definitions for project-wide consistency.
-
----
-
-## 🎨 Social Styles
-
-ReadmeSmith supports two distinct styles for your "Connect with me" section:
-
-| Style | Preview |
-|-------|---------|
-| **Sustainable** | Colorful, official brand logos with a modern look. |
-| **Badges** | Classic, high-contrast Shields.io badges. |
-
----
-
-## 📦 Getting Started
-
-1. **Clone the repo**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/readmesmith.git
+   git clone https://github.com/[your-username]/readme-generator.git
+   cd readme-generator
    ```
-2. **Install dependencies**
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
-3. **Run the development server**
+
+3. **Run the development server:**
    ```bash
    npm run dev
    ```
 
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## 📖 How to Use
+
+1. **Modular Editor:** Start with the default template or add new sections from the dropdown. Customize the content and watch the preview update instantly.
+2. **AI Prompt Builder:** Click the **Sparkles** icon in the sidebar. Follow the 8-step guide to input your professional history, goals, and tech stack. Generate the prompt, copy it, and feed it to an AI to get a world-class README.
+3. **Live Previewer:** Click the **Eye** icon to access the standalone previewer. Paste any markdown code to see how it renders on GitHub.
+
+## 🤝 Credits
+
+ReadmeSmith is powered by amazing open-source projects:
+- **Skill Icons:** [tandpfun/skill-icons](https://github.com/tandpfun/skill-icons)
+- **GitHub Stats:** [anuraghazra/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
+- **Snake Animation:** [Platane/snk](https://github.com/Platane/snk)
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
 ---
-
-## 💖 Support the Project
-
-If you find **ReadmeSmith** useful and want to support its development, consider buying me a coffee!
-
-<p align="left">
-  <a href="https://paypal.me/SujoyMoulick?locale.x=en_GB&country.x=IN" target="_blank">
-    <img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee" />
-  </a>
-</p>
-
----
-
-## 📜 Credits
-
-ReadmeSmith is built upon the amazing work of the open-source community. Check our **Contributors** page in the app for a full list of projects that make this possible.
-
----
-
-<p align="center">Made with ❤️ for the Developer Community</p>
+Built with passion for the Open Source Community.

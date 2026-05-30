@@ -21,8 +21,8 @@ const DEFAULT_SECTIONS: Section[] = [
     title: "Header",
     enabled: true,
     content: {
-      title: "Hi 👋, I'm Sujoy Moulick",
-      subtitle: "A passionate frontend developer and graphic designer from India",
+      title: "Hi 👋, I'm [Your Name]",
+      subtitle: "A passionate developer from [Your Location]",
     },
   },
   {
@@ -31,11 +31,11 @@ const DEFAULT_SECTIONS: Section[] = [
     title: "Introduction",
     enabled: true,
     content: {
-      workingOn: "My Portfolio",
-      learning: "Frameworks, Html, Css, JS, DSA",
-      askMe: "Frontend",
-      contact: "sujoymoulick05@gmail.com",
-      funFact: "I think i am funny",
+      workingOn: "My Awesome Project",
+      learning: "New Technologies and Frameworks",
+      askMe: "Development and Design",
+      contact: "your-email@example.com",
+      funFact: "I love building things!",
       illustrationUrl: "https://raw.githubusercontent.com/abhisheknaiidu/abhisheknaiidu/master/code.gif",
     },
   },
@@ -48,10 +48,7 @@ const DEFAULT_SECTIONS: Section[] = [
       skills: [
         { name: "React", category: "frontend" },
         { name: "TypeScript", category: "frontend" },
-        { name: "JavaScript", category: "frontend" },
         { name: "Node.js", category: "backend" },
-        { name: "Python", category: "backend" },
-        { name: "AWS", category: "tools" },
       ],
     },
   },
@@ -61,7 +58,7 @@ const DEFAULT_SECTIONS: Section[] = [
     title: "GitHub Streak",
     enabled: true,
     content: {
-      username: "sujoymoulick",
+      username: "[your-github-username]",
       theme: "radical",
     },
   },

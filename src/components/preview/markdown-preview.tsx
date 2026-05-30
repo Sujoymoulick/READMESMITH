@@ -33,10 +33,10 @@ export function MarkdownPreview({ markdown }: MarkdownPreviewProps) {
   };
 
   return (
-    <Card className="h-full bg-zinc-900 border-zinc-800 overflow-hidden flex flex-col">
+    <Card className="h-full bg-card border-border overflow-hidden flex flex-col">
       <Tabs defaultValue="preview" className="flex-1 flex flex-col min-h-0">
-        <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-800 bg-zinc-900/50">
-          <TabsList className="bg-zinc-800 border-zinc-700">
+        <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-card/50">
+          <TabsList className="bg-muted border-border">
             <TabsTrigger value="preview" className="gap-2">
               <Eye className="h-4 w-4" /> Preview
             </TabsTrigger>
@@ -45,10 +45,10 @@ export function MarkdownPreview({ markdown }: MarkdownPreviewProps) {
             </TabsTrigger>
           </TabsList>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" onClick={copyToClipboard} className="text-zinc-400 hover:text-white">
+            <Button variant="ghost" size="sm" onClick={copyToClipboard} className="text-muted-foreground hover:text-foreground">
               <Copy className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={downloadFile} className="text-zinc-400 hover:text-white">
+            <Button variant="ghost" size="sm" onClick={downloadFile} className="text-muted-foreground hover:text-foreground">
               <Download className="h-4 w-4" />
             </Button>
           </div>
@@ -73,7 +73,7 @@ export function MarkdownPreview({ markdown }: MarkdownPreviewProps) {
 
         <TabsContent value="code" className="flex-1 overflow-auto min-h-0 p-0 m-0">
           <textarea
-            className="w-full h-full bg-zinc-950 text-zinc-300 p-6 font-mono text-sm resize-none border-none outline-none focus:ring-0"
+            className="w-full h-full bg-background text-foreground/80 p-6 font-mono text-sm resize-none border-none outline-none focus:ring-0"
             readOnly
             value={markdown}
           />

@@ -71,7 +71,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
         );
       case "intro":
         return (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label>🔭 Working on</Label>
               <Input value={c.workingOn || ""} onChange={(e) => handleContentChange("workingOn", e.target.value)} />
@@ -97,7 +97,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
       case "skills":
         return (
           <div className="space-y-4">
-            <Label className="text-zinc-400">Select the skills you want to showcase</Label>
+            <Label className="text-muted-foreground">Select the skills you want to showcase</Label>
             <SkillSelector
               selectedSkills={c.skills || []}
               onChange={(skills) => handleContentChange("skills", skills)}
@@ -116,13 +116,13 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
               />
             </div>
             {c.points?.map((p: any, i: number) => (
-              <div key={i} className="p-3 bg-zinc-800/50 rounded-lg space-y-2 border border-zinc-700">
+              <div key={i} className="p-3 bg-muted/50 rounded-lg space-y-2 border border-border">
                 <div className="flex justify-between items-center">
-                  <Label className="text-zinc-300 font-bold text-xs uppercase">Point {i + 1}</Label>
+                  <Label className="text-foreground/80 font-bold text-xs uppercase">Point {i + 1}</Label>
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    className="h-6 w-6 text-zinc-500 hover:text-red-400"
+                    className="h-6 w-6 text-muted-foreground hover:text-destructive"
                     onClick={() => {
                       const newPoints = [...c.points];
                       newPoints.splice(i, 1);
@@ -135,7 +135,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
                 <Input
                   value={p.title || ""}
                   placeholder="Point Title"
-                  className="bg-zinc-900 h-8 text-xs"
+                  className="bg-background h-8 text-xs"
                   onChange={(e) => {
                     const newPoints = [...c.points];
                     newPoints[i].title = e.target.value;
@@ -145,7 +145,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
                 <Textarea
                   value={p.text || ""}
                   placeholder="Point Description"
-                  className="bg-zinc-900 min-h-[60px] text-xs"
+                  className="bg-background min-h-[60px] text-xs"
                   onChange={(e) => {
                     const newPoints = [...c.points];
                     newPoints[i].text = e.target.value;
@@ -165,7 +165,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
             >
               <PlusCircle className="h-3 w-3 mr-2" /> Add Point
             </Button>
-            <div className="space-y-2 border-t border-zinc-800 pt-4">
+            <div className="space-y-2 border-t border-border pt-4">
               <Label>What You Can Expect</Label>
               <Textarea
                 value={c.expect || ""}
@@ -269,7 +269,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
                     variant="outline"
                     size="sm"
                     disabled={isAdded}
-                    className="text-[10px] h-8 gap-2 bg-zinc-900 border-zinc-800"
+                    className="text-[10px] h-8 gap-2 bg-card border-border"
                     onClick={() => {
                       const newSocials = [...currentSocials, { platform: platform.name, url: "" }];
                       handleContentChange("socials", newSocials);
@@ -282,7 +282,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
               <Button
                 variant="outline"
                 size="sm"
-                className="text-[10px] h-8 gap-2 bg-zinc-900 border-zinc-800"
+                className="text-[10px] h-8 gap-2 bg-card border-border"
                 onClick={() => {
                   const newSocials = [...currentSocials, { platform: "Custom", url: "" }];
                   handleContentChange("socials", newSocials);
@@ -298,7 +298,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
                   <div className="w-24 shrink-0">
                     <Input
                       value={social.platform}
-                      className="h-8 text-[10px] bg-zinc-900 border-zinc-800"
+                      className="h-8 text-[10px] bg-card border-border"
                       onChange={(e) => {
                         const newSocials = [...currentSocials];
                         newSocials[i].platform = e.target.value;
@@ -309,7 +309,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
                   <Input
                     value={social.url}
                     placeholder="Profile URL"
-                    className="h-8 text-[10px] bg-zinc-900 border-zinc-800"
+                    className="h-8 text-[10px] bg-card border-border"
                     onChange={(e) => {
                       const newSocials = [...currentSocials];
                       newSocials[i].url = e.target.value;
@@ -319,7 +319,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-8 w-8 text-zinc-500 hover:text-red-400 shrink-0"
+                    className="h-8 w-8 text-muted-foreground hover:text-red-400 shrink-0"
                     onClick={() => {
                       const newSocials = [...currentSocials];
                       newSocials.splice(i, 1);
@@ -346,7 +346,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
         );
       default:
         return (
-          <div className="py-2 text-sm text-zinc-500 italic">
+          <div className="py-2 text-sm text-muted-foreground italic">
             Configuration for {section.type} section.
           </div>
         );
@@ -354,15 +354,15 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
   };
 
   return (
-    <Card className="p-4 bg-zinc-900 border-zinc-800">
-      <div className="flex items-center justify-between mb-4 border-b border-zinc-800 pb-2">
+    <Card className="p-4 bg-card border-border shadow-sm">
+      <div className="flex items-center justify-between mb-4 border-b border-border pb-2">
         <div className="flex items-center gap-2">
-          <GripVertical className="h-5 w-5 text-zinc-600 cursor-grab" />
-          <span className="font-semibold text-zinc-200">{section.title}</span>
+          <GripVertical className="h-5 w-5 text-muted-foreground/50 cursor-grab" />
+          <span className="font-semibold text-foreground">{section.title}</span>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <Label className="text-xs text-zinc-400">Enabled</Label>
+            <Label className="text-xs text-muted-foreground">Enabled</Label>
             <Switch
               checked={section.enabled}
               onCheckedChange={(checked) => onUpdate({ enabled: checked })}
@@ -372,7 +372,7 @@ export function SectionEditor({ section, onUpdate, onRemove }: SectionEditorProp
             variant="ghost"
             size="icon"
             onClick={onRemove}
-            className="text-zinc-500 hover:text-red-400"
+            className="text-muted-foreground hover:text-destructive"
           >
             <Trash2 className="h-4 w-4" />
           </Button>

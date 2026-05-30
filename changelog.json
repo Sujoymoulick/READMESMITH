@@ -1,0 +1,120 @@
+{
+  "repoName": "readme-generator",
+  "repoUrl": "https://github.com/Sujoymoulick/READMESMITH",
+  "generatedAt": "2026-05-25T17:18:04.950Z",
+  "stats": {
+    "totalCommits": 7,
+    "totalContributors": 1,
+    "contributors": [
+      {
+        "name": "Sujoy Moulick",
+        "email": "sujoymoulick05@gmail.com",
+        "commits": 7
+      }
+    ],
+    "byType": {
+      "style": 1,
+      "feat": 5,
+      "other": 1
+    }
+  },
+  "releases": [
+    {
+      "version": "Unreleased",
+      "date": "Present",
+      "commits": [
+        {
+          "hash": "2c6b57d44297295fb90d496fe4f4cc0673dd6880",
+          "shortHash": "2c6b57d",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T02:02:20+05:30",
+          "rawSubject": "style: further increase logo size for languages and tools",
+          "type": "style",
+          "scope": null,
+          "isBreaking": false,
+          "description": "further increase logo size for languages and tools",
+          "tag": null
+        },
+        {
+          "hash": "4ad27458260e1bd99b02b996ff64d8d3a4d5380d",
+          "shortHash": "4ad2745",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T01:59:28+05:30",
+          "rawSubject": "feat: enhance languages and tools layout and fix build errors",
+          "type": "feat",
+          "scope": null,
+          "isBreaking": false,
+          "description": "enhance languages and tools layout and fix build errors",
+          "tag": null
+        },
+        {
+          "hash": "edccd17e6b9c6415a58a46ebdba75a1980bc862f",
+          "shortHash": "edccd17",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T01:50:22+05:30",
+          "rawSubject": "feat: align intro and gif side-by-side, disable dev indicators, and apply custom favicons",
+          "type": "feat",
+          "scope": null,
+          "isBreaking": false,
+          "description": "align intro and gif side-by-side, disable dev indicators, and apply custom favicons",
+          "tag": null
+        },
+        {
+          "hash": "07227869eb0100dc3f780e3a7ebcbf9d3fc05156",
+          "shortHash": "0722786",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T01:46:06+05:30",
+          "rawSubject": "feat: add interactive sonic waveform landing page and transition logic",
+          "type": "feat",
+          "scope": null,
+          "isBreaking": false,
+          "description": "add interactive sonic waveform landing page and transition logic",
+          "tag": null
+        },
+        {
+          "hash": "1fd472775eb5ba53cd9dc4338aa3571f5ded09b9",
+          "shortHash": "1fd4727",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T01:41:10+05:30",
+          "rawSubject": "feat: remove GitHub Stats section as requested",
+          "type": "feat",
+          "scope": null,
+          "isBreaking": false,
+          "description": "remove GitHub Stats section as requested",
+          "tag": null
+        },
+        {
+          "hash": "4054c45143de518d31216359b0744c29a7a043e5",
+          "shortHash": "4054c45",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T01:34:01+05:30",
+          "rawSubject": "feat: initial release of ReadmeSmith with Sustainable Buttons, mobile responsiveness, and custom branding",
+          "type": "feat",
+          "scope": null,
+          "isBreaking": false,
+          "description": "initial release of ReadmeSmith with Sustainable Buttons, mobile responsiveness, and custom branding",
+          "tag": null
+        },
+        {
+          "hash": "1f95ffbe4d2967abc39bfd9ebb7f46cbd372e459",
+          "shortHash": "1f95ffb",
+          "author": "Sujoy Moulick",
+          "email": "sujoymoulick05@gmail.com",
+          "date": "2026-05-25T01:20:11+05:30",
+          "rawSubject": "first commit",
+          "type": "other",
+          "scope": null,
+          "isBreaking": false,
+          "description": "first commit",
+          "tag": null
+        }
+      ]
+    }
+  ]
+}
