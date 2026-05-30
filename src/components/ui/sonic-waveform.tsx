@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { cn } from "@/lib/utils";
 
 // Sonic Waveform Canvas Component
 const SonicWaveformCanvas = () => {
@@ -26,7 +25,7 @@ const SonicWaveformCanvas = () => {
         };
         
         const draw = () => {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillStyle = 'rgba(23, 23, 23, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             const lineCount = 60;
@@ -37,7 +36,7 @@ const SonicWaveformCanvas = () => {
                 ctx.beginPath();
                 const progress = i / lineCount;
                 const colorIntensity = Math.sin(progress * Math.PI);
-                ctx.strokeStyle = `rgba(0, 255, 192, ${colorIntensity * 0.5})`;
+                ctx.strokeStyle = `rgba(245, 158, 11, ${colorIntensity * 0.5})`;
                 ctx.lineWidth = 1.5;
 
                 for (let j = 0; j < segmentCount + 1; j++) {
@@ -83,7 +82,7 @@ const SonicWaveformCanvas = () => {
         };
     }, []);
 
-    return <canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full bg-black" />;
+    return <canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full bg-background" />;
 };
 
 
@@ -112,15 +111,15 @@ const SonicWaveformHero = ({ onStart }: SonicWaveformHeroProps) => {
         >
             <SonicWaveformCanvas />
             
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent z-10"></div>
 
             {/* Overlay HTML Content */}
             <div className="relative z-20 text-center p-6 max-w-4xl mx-auto">
                 <motion.div
                     custom={0} variants={fadeUpVariants} initial="hidden" animate="visible"
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 mb-6 backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6 backdrop-blur-sm"
                 >
-                    <Sparkles className="h-4 w-4 text-teal-300" />
+                    <Sparkles className="h-4 w-4 text-amber-300" />
                     <span className="text-sm font-medium text-gray-200">
                         The ultimate README forge
                     </span>
@@ -128,14 +127,14 @@ const SonicWaveformHero = ({ onStart }: SonicWaveformHeroProps) => {
 
                 <motion.h1
                     custom={1} variants={fadeUpVariants} initial="hidden" animate="visible"
-                    className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500"
+                    className="text-5xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-amber-500"
                 >
                     ReadmeSmith
                 </motion.h1>
 
                 <motion.p
                     custom={2} variants={fadeUpVariants} initial="hidden" animate="visible"
-                    className="max-w-2xl mx-auto text-xl text-zinc-400 mb-10 leading-relaxed"
+                    className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed"
                 >
                     Forge professional GitHub profiles in seconds. Interactive, modular, and designed for developers who value impact.
                 </motion.p>
@@ -145,7 +144,7 @@ const SonicWaveformHero = ({ onStart }: SonicWaveformHeroProps) => {
                 >
                     <button 
                         onClick={onStart}
-                        className="group px-8 py-4 bg-white text-black font-bold rounded-lg shadow-2xl hover:bg-zinc-200 transition-all duration-300 flex items-center gap-2 mx-auto active:scale-95"
+                        className="group px-8 py-4 bg-amber-500 text-black font-bold rounded-lg shadow-2xl hover:bg-amber-400 transition-all duration-300 flex items-center gap-2 mx-auto active:scale-95"
                     >
                         Forge Your README
                         <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -158,7 +157,7 @@ const SonicWaveformHero = ({ onStart }: SonicWaveformHeroProps) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 0.5 }}
                     transition={{ delay: 2, duration: 1 }}
-                    className="text-zinc-500 text-xs font-mono tracking-widest uppercase"
+                    className="text-muted-foreground text-xs font-mono tracking-widest uppercase"
                 >
                     Built with passion for the open source community
                 </motion.p>

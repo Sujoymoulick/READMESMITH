@@ -90,14 +90,14 @@ export function SnakeGame() {
   };
 
   return (
-    <Card className="p-6 flex flex-col items-center gap-4 bg-zinc-900 border-zinc-800 text-white">
+    <Card className="p-6 flex flex-col items-center gap-4 bg-card border-border text-foreground">
       <div className="flex justify-between w-full max-w-[400px]">
         <span className="text-xl font-bold">Score: {score}</span>
-        {isGameOver && <span className="text-red-500 font-bold">Game Over!</span>}
+        {isGameOver && <span className="text-destructive font-bold animate-bounce">Game Over!</span>}
       </div>
 
       <div
-        className="relative bg-zinc-800 border-4 border-zinc-700"
+        className="relative bg-muted border-4 border-border"
         style={{
           width: GRID_SIZE * 20,
           height: GRID_SIZE * 20,
@@ -109,7 +109,7 @@ export function SnakeGame() {
         {snake.map((segment, i) => (
           <div
             key={i}
-            className="bg-green-500 rounded-sm"
+            className="bg-amber-500 rounded-sm"
             style={{
               gridColumnStart: segment.x + 1,
               gridRowStart: segment.y + 1,
@@ -138,7 +138,7 @@ export function SnakeGame() {
           </Button>
         )}
       </div>
-      <p className="text-zinc-400 text-sm">Use Arrow Keys to move</p>
+      <p className="text-muted-foreground text-sm">Use Arrow Keys to move</p>
     </Card>
   );
 }

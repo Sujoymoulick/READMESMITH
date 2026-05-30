@@ -6,14 +6,13 @@ import { generateMarkdown } from "@/lib/markdown-generator";
 import { SectionEditor } from "@/components/editor/section-editor";
 import { MarkdownPreview } from "@/components/preview/markdown-preview";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   PlusCircle,
-  Download,
-  Upload,
-  FileText,
   Settings,
   Users,
+  Sparkles,
+  Eye,
+  MoreVertical,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -24,44 +23,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContributorsPage } from "@/components/contributors/contributors-page";
+import { PromptBuilder } from "@/components/prompt-builder/PromptBuilder";
+import { MarkdownPreviewer } from "@/components/markdown-previewer/MarkdownPreviewer";
 import SonicWaveformHero from "@/components/ui/sonic-waveform";
 
 export default function Home() {
   const { data, updateSection, addSection, removeSection, setData } = useREADME();
-  const [activeTab, setActiveTab] = useState<"editor" | "contributors">("editor");
+  const [activeTab, setActiveTab] = useState<"editor" | "contributors" | "prompt-builder" | "previewer">("editor");
   const [hasStarted, setStarted] = useState(false);
 
   const markdown = generateMarkdown(data.sections);
-
-  const handleExportJSON = () => {
-    const blob = new Blob([JSON.stringify(data, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "readme-config.json";
-    a.click();
-    URL.revokeObjectURL(url);
-    toast.success("Configuration exported!");
-  };
-
-  const handleImportJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const parsed = JSON.parse(event.target?.result as string);
-        setData(parsed);
-        toast.success("Configuration imported!");
-      } catch (err) {
-        toast.error("Invalid JSON file");
-      }
-    };
-    reader.readAsText(file);
-  };
 
   const addNewSection = (type: any) => {
     const id = `${type}-${Date.now()}`;
@@ -72,12 +43,12 @@ export default function Home() {
       content = { url: "", align: "center" } as any;
     } else if (type === "profile-details") {
       content = {
-        intro: "Welcome to my GitHub profile! This repository serves as a digital portfolio showcasing my development skills, coding journey, and open-source contributions.",
+        intro: "Welcome to my GitHub profile! This repository serves as a digital portfolio showcasing my development skills and contributions.",
         points: [
-          { title: "Learning & Skill Development", text: "Repositories for educational purposes. Solutions to coding challenges. Implementations of algorithms and data structures." },
-          { title: "Web & Software Development", text: "Projects demonstrating proficiency in programming languages, frameworks, and technologies. Practical applications built for learning and showcasing development skills." }
+          { title: "Learning & Development", text: "Repositories for educational purposes and skill building." },
+          { title: "Software Development", text: "Projects demonstrating proficiency in modern technologies." }
         ],
-        expect: "A live history of my coding work. Insight into my learning progression. Open-source engagement and collaboration opportunities."
+        expect: "A history of my work and learning progression."
       } as any;
     }
 
@@ -96,45 +67,78 @@ export default function Home() {
   }
 
   return (
-    <main className="flex h-screen bg-zinc-950 text-white overflow-hidden flex-col md:flex-row">
+    <main className="flex h-[100dvh] bg-background text-foreground overflow-hidden flex-col md:flex-row">
       {/* Sidebar/Navigation - Mobile Top / Desktop Left */}
-      <div className="w-full md:w-16 border-b md:border-b-0 md:border-r border-zinc-800 flex md:flex-col items-center py-4 md:py-6 px-4 md:px-0 gap-4 md:gap-6 bg-zinc-900/50">
-        <div className="p-1 bg-zinc-800 rounded-lg shrink-0 overflow-hidden border border-zinc-700">
+      <div className="w-full md:w-16 border-b md:border-b-0 md:border-r border-border flex md:flex-col items-center py-4 md:py-6 px-4 md:px-0 justify-between md:justify-start gap-4 md:gap-6 bg-sidebar shrink-0">
+        <div className="p-1 bg-card rounded-lg shrink-0 overflow-hidden border border-border">
           <img src="/mainlogo.png" alt="ReadmeSmith Logo" className="h-8 w-8 object-cover" />
         </div>
-        <div className="flex-1 flex md:flex-col gap-2 md:gap-4 justify-center md:justify-start">
+        
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex flex-col gap-4 justify-start">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setActiveTab("editor")}
-            className={activeTab === "editor" ? "bg-zinc-800" : ""}
+            className={activeTab === "editor" ? "bg-accent text-accent-foreground" : ""}
+            title="Editor"
           >
             <Settings className="h-5 w-5" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
+            onClick={() => setActiveTab("prompt-builder")}
+            className={activeTab === "prompt-builder" ? "bg-accent text-accent-foreground" : ""}
+            title="AI Prompt Builder"
+          >
+            <Sparkles className="h-5 w-5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setActiveTab("contributors")}
-            className={activeTab === "contributors" ? "bg-zinc-800" : ""}
+            className={activeTab === "contributors" ? "bg-accent text-accent-foreground" : ""}
+            title="Credits & Contributors"
           >
             <Users className="h-5 w-5" />
           </Button>
-        </div>
-        <div className="flex md:flex-col gap-2">
-          <Button variant="ghost" size="icon" onClick={handleExportJSON}>
-            <Download className="h-5 w-5" />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setActiveTab("previewer")}
+            className={activeTab === "previewer" ? "bg-accent text-accent-foreground" : ""}
+            title="Live Markdown Previewer"
+          >
+            <Eye className="h-5 w-5" />
           </Button>
-          <label className="cursor-pointer">
-            <input
-              type="file"
-              className="hidden"
-              accept=".json"
-              onChange={handleImportJSON}
+        </div>
+
+        {/* Mobile Navigation Dropdown */}
+        <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <Button variant="ghost" size="icon">
+                  <MoreVertical className="h-5 w-5" />
+                </Button>
+              }
             />
-            <div className="p-2 hover:bg-zinc-800 rounded-md transition-colors">
-              <Upload className="h-5 w-5" />
-            </div>
-          </label>
+            <DropdownMenuContent align="end" className="bg-popover border-border text-popover-foreground">
+              <DropdownMenuItem onClick={() => setActiveTab("editor")} className="gap-2">
+                <Settings className="h-4 w-4" /> Editor
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setActiveTab("prompt-builder")} className="gap-2">
+                <Sparkles className="h-4 w-4" /> AI Prompt Builder
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setActiveTab("contributors")} className="gap-2">
+                <Users className="h-4 w-4" /> Contributors
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setActiveTab("previewer")} className="gap-2">
+                <Eye className="h-4 w-4" /> Live Previewer
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
@@ -142,11 +146,15 @@ export default function Home() {
       <div className="flex-1 flex overflow-hidden flex-col md:flex-row">
         {activeTab === "contributors" ? (
           <ContributorsPage />
+        ) : activeTab === "prompt-builder" ? (
+          <PromptBuilder />
+        ) : activeTab === "previewer" ? (
+          <MarkdownPreviewer />
         ) : (
           <>
             <Tabs defaultValue="editor" className="flex-1 flex flex-col md:hidden min-h-0">
-              <div className="px-4 py-2 border-b border-zinc-800 bg-zinc-900/30 flex justify-between items-center">
-                <TabsList className="bg-zinc-900 border-zinc-800">
+              <div className="px-4 py-2 border-b border-border bg-muted/30 flex justify-between items-center">
+                <TabsList className="bg-muted border-border">
                   <TabsTrigger value="editor">Editor</TabsTrigger>
                   <TabsTrigger value="preview">Preview</TabsTrigger>
                 </TabsList>
@@ -158,7 +166,7 @@ export default function Home() {
                       </Button>
                     }
                   />
-                  <DropdownMenuContent className="bg-zinc-900 border-zinc-800 text-white">
+                  <DropdownMenuContent className="bg-popover border-border text-popover-foreground">
                     <DropdownMenuItem onClick={() => addNewSection("banner")}>Banner Image</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("header")}>Title Header</DropdownMenuItem>
                     <DropdownMenuItem onClick={() => addNewSection("intro")}>Introduction</DropdownMenuItem>
@@ -174,7 +182,7 @@ export default function Home() {
                 </DropdownMenu>
               </div>
               <TabsContent value="editor" className="flex-1 m-0 min-h-0">
-                <ScrollArea className="h-full">
+                <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500/20">
                   <div className="p-4 space-y-4">
                     {data.sections.map((section) => (
                       <SectionEditor
@@ -185,7 +193,7 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                </ScrollArea>
+                </div>
               </TabsContent>
               <TabsContent value="preview" className="flex-1 m-0 min-h-0 p-4">
                 <MarkdownPreview markdown={markdown} />
@@ -195,9 +203,9 @@ export default function Home() {
             {/* Desktop Side-by-Side View */}
             <div className="hidden md:flex flex-1 min-h-0">
               {/* Editor Panel */}
-              <div className="w-1/2 flex flex-col min-h-0 border-r border-zinc-800 bg-zinc-950">
-                <div className="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/30">
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+              <div className="w-1/2 flex flex-col min-h-0 border-r border-border bg-background">
+                <div className="p-4 border-b border-border flex justify-between items-center bg-muted/30">
+                  <h1 className="text-xl font-bold bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
                     ReadmeSmith
                   </h1>                  <DropdownMenu>
                     <DropdownMenuTrigger
@@ -207,7 +215,7 @@ export default function Home() {
                         </Button>
                       }
                     />
-                    <DropdownMenuContent className="bg-zinc-900 border-zinc-800 text-white">
+                    <DropdownMenuContent className="bg-popover border-border text-popover-foreground">
                       <DropdownMenuItem onClick={() => addNewSection("banner")}>
                         Banner Image
                       </DropdownMenuItem>
@@ -245,7 +253,7 @@ export default function Home() {
                   </DropdownMenu>
                 </div>
 
-                <ScrollArea className="flex-1 h-full">
+                <div className="flex-1 h-full overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500/20">
                   <div className="p-4 space-y-4 max-w-2xl mx-auto pb-40">
                     {data.sections.map((section) => (
                       <SectionEditor
@@ -256,11 +264,11 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                </ScrollArea>
+                </div>
               </div>
 
               {/* Preview Panel */}
-              <div className="w-1/2 bg-zinc-900/20 p-4 min-h-0 overflow-hidden">
+              <div className="w-1/2 bg-muted/20 p-4 min-h-0 overflow-hidden">
                 <MarkdownPreview markdown={markdown} />
               </div>
             </div>
