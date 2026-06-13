@@ -1,10 +1,12 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7216d13d-96f3-411b-9fdd-daedced72f99" alt="EchoToDo Logo" width="120" />
+</p>
+
 # ReadmeSmith 🛠️
 
 **Forge professional GitHub profiles in seconds. Interactive, modular, and designed for developers who value impact.**
 
 ReadmeSmith is the ultimate README forge—a modern, AI-powered toolkit for developers to build, preview, and refine their GitHub profiles. Whether you're using our modular editor or generating high-quality prompts for your favorite AI, ReadmeSmith ensures your first impression is unforgettable.
-
-![ReadmeSmith Logo](/public/mainlogo.png)
 
 ## ✨ Features
 
