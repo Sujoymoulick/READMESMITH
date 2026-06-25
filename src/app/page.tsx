@@ -13,6 +13,7 @@ import {
   Sparkles,
   Eye,
   MoreVertical,
+  FileText,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -25,11 +26,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContributorsPage } from "@/components/contributors/contributors-page";
 import { PromptBuilder } from "@/components/prompt-builder/PromptBuilder";
 import { MarkdownPreviewer } from "@/components/markdown-previewer/MarkdownPreviewer";
+import { MarkdownToPdfConverter } from "@/components/markdown-to-pdf/MarkdownToPdfConverter";
 import SonicWaveformHero from "@/components/ui/sonic-waveform";
 
 export default function Home() {
   const { data, updateSection, addSection, removeSection, setData } = useREADME();
-  const [activeTab, setActiveTab] = useState<"editor" | "contributors" | "prompt-builder" | "previewer">("editor");
+  const [activeTab, setActiveTab] = useState<"editor" | "contributors" | "prompt-builder" | "previewer" | "pdf-converter">("editor");
   const [hasStarted, setStarted] = useState(false);
 
   const markdown = generateMarkdown(data.sections);
@@ -112,6 +114,15 @@ export default function Home() {
           >
             <Eye className="h-5 w-5" />
           </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setActiveTab("pdf-converter")}
+            className={activeTab === "pdf-converter" ? "bg-accent text-accent-foreground" : ""}
+            title="Markdown to PDF Converter"
+          >
+            <FileText className="h-5 w-5" />
+          </Button>
         </div>
 
         {/* Mobile Navigation Dropdown */}
@@ -137,6 +148,9 @@ export default function Home() {
               <DropdownMenuItem onClick={() => setActiveTab("previewer")} className="gap-2">
                 <Eye className="h-4 w-4" /> Live Previewer
               </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setActiveTab("pdf-converter")} className="gap-2">
+                <FileText className="h-4 w-4" /> PDF Converter
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -150,6 +164,8 @@ export default function Home() {
           <PromptBuilder />
         ) : activeTab === "previewer" ? (
           <MarkdownPreviewer />
+        ) : activeTab === "pdf-converter" ? (
+          <MarkdownToPdfConverter />
         ) : (
           <>
             <Tabs defaultValue="editor" className="flex-1 flex flex-col md:hidden min-h-0">
